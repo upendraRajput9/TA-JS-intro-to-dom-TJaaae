@@ -5,14 +5,28 @@ default value to be "text" and return the input element inside label. (create it
 
 */
 
-// Your code goes here
+function createInputElm(label,type="text"){
+  let parentElement= document.createElement(`label`)
+ let input=document.createElement(`input`)
+ input.setAttribute(`type`,`type`)
+ parentElement.append(input)
+ parentElement.prepend(`${label}:`)
+ return parentElement
+ 
+ }
 
 // TEST
 createInputElm('Your name'); //<label>Your name: <input type="text"></label>
 createInputElm('Your age', 'number'); //<label>Your age: <input type="number"></label>
 
 // 2. Do the same thing as above using string literal like `<h1>Hello</h1>`
-
+function createInputElm(label,type="text"){
+ return `<label>
+   ${label}
+   <input type=${type}>
+ </label>`
+ 
+ }
 // Your code goes here
 
 // TEST
@@ -22,7 +36,15 @@ createInputElm('Your age', 'number'); //<label>Your age: <input type="number"></
 // 3. Create a function named `createList` that accept and array of data like ['Mango', 'Apple', 'Banana'] and returns
 // the html for the link like <ul> <li>Mango</li>  <li>Apple</li>  <li>Banana</li> </ul>
 // Your code goes here
-
+function createList(arr){
+  let ul=document.createElement(`ul`)
+     for(let i=0;i<arr.length;i++){
+      let li=(document.createElement(`li`))
+  li.innerText=arr[i]
+  ul.append(li)
+     }
+return ul
+}
 // TEST
 createList(['ALABAMA', 'ALASKA', 'HAWAII', 'KENTUCKY']);
 createList(['Afghanistan', 'Antarctica', 'Congo', 'Estonia']);
@@ -40,7 +62,20 @@ createList(['Afghanistan', 'Antarctica', 'Congo', 'Estonia']);
 */
 
 // Your code goes here
-
+function createTodoList(arr){
+  let ul = document.createElement(`ul`)
+  let li = document.createElement(`li`)
+  let p = document.createElement(`p`)
+  p.innerText=arr[1].name
+  let input=document.createElement(`input`)
+  input.setAttribute(`type`,"checkbox")
+  input.setAttribute(`name`,"")
+  input.setAttribute(`id`,"")
+   let span=document.createElement(`span`)
+   li.append(p,input,span)
+   ul.append(li)
+   return ul
+}
 // TEST
 createTodoList([
   { name: 'Learn DOM', isDone: false },
